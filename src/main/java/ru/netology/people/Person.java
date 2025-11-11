@@ -5,8 +5,8 @@ import java.util.OptionalInt;
 public class Person {
     private final String name;
     private final String surname;
-    private Integer age;      // может быть null
-    private String city;      // может быть null
+    private Integer age;
+    private String city;
 
     // Приватный конструктор — используется только из Builder
     public Person(String name, String surname, Integer age, String city) {
@@ -48,7 +48,6 @@ public class Person {
         if (age != null) {
             age++;
         } else {
-            // Если возраст не был задан — начинаем с 1
             age = 1;
         }
     }

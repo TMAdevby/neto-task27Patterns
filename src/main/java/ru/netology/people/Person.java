@@ -3,23 +3,13 @@ import java.util.Objects;
 import java.util.OptionalInt;
 
 public class Person {
-    protected final String name;
-    protected final String surname;
-    protected Integer age;
-    protected String city;
+    private final String name;
+    private final String surname;
+    private Integer age;      // может быть null
+    private String city;      // может быть null
 
-    public Person(String name, String surname) {
-        this.name = name;
-        this.surname = surname;
-    }
-
-    public Person(String name, String surname, int age) {
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
-    }
-
-    public Person(String name, String surname, int age, String city) {
+    // Приватный конструктор — используется только из Builder
+    private Person(String name, String surname, Integer age, String city) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -27,14 +17,11 @@ public class Person {
     }
 
     public boolean hasAge() {
-
         return age != null;
-
     }
+
     public boolean hasAddress() {
-
         return city != null && !city.isBlank();
-
     }
 
     public String getName() {
@@ -45,7 +32,11 @@ public class Person {
         return surname;
     }
 
-    public String getCity() {
+    public OptionalInt getAge() {
+        return age != null ? OptionalInt.of(age) : OptionalInt.empty();
+    }
+
+    public String getAddress() {
         return city;
     }
 
@@ -53,35 +44,49 @@ public class Person {
         this.city = city;
     }
 
-    public OptionalInt getAge() {
-
-    return age != null ? OptionalInt.of(age) : OptionalInt.empty();
-
-    }
-
     public void happyBirthday() {
-        age++;
+        if (age != null) {
+            age++;
+        } else {
+            // Если возраст не был задан — начинаем с 1
+            age = 1;
+        }
     }
 
     @Override
     public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", age=" + age +
-                ", city='" + city + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append(name).append(" ").append(surname);
+        if (hasAge()) {
+            sb.append(", возраст: ").append(age);
+        }
+        if (hasAddress()) {
+            sb.append(", город: ").append(city);
+        }
+        return sb.toString();
     }
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return Objects.equals(name, person.name) && Objects.equals(surname, person.surname) && Objects.equals(age, person.age) && Objects.equals(city, person.city);
+        return Objects.equals(name, person.name) &&
+                Objects.equals(surname, person.surname) &&
+                Objects.equals(age, person.age) &&
+                Objects.equals(city, person.city);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(name, surname, age, city);
+    }
+
+    // Метод для создания билдера ребёнка
+    public PersonBuilder newChildBuilder() {
+        return new PersonBuilder()
+                .setSurname(this.surname)   // фамилия как у родителя
+                .setAddress(this.city)      // город как у родителя
+                .setAge(0);                 // возраст 0 (или можно не задавать — тогда будет null)
     }
 }

@@ -6,7 +6,7 @@ public class PersonBuilder {
     private Integer age;
     private String address;
 
-    private PersonBuilder setName(String name) {
+    public PersonBuilder setName(String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Имя не может быть пустым");
         }

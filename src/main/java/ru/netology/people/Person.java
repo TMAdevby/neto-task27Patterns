@@ -9,7 +9,7 @@ public class Person {
     private String city;      // может быть null
 
     // Приватный конструктор — используется только из Builder
-    private Person(String name, String surname, Integer age, String city) {
+    public Person(String name, String surname, Integer age, String city) {
         this.name = name;
         this.surname = surname;
         this.age = age;

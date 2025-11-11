@@ -1,4 +1,4 @@
-package ru.netology.people;
+package ru.netology.builder;
 
 public class PersonBuilder {
     private String name;
@@ -32,7 +32,7 @@ public class PersonBuilder {
 
     public PersonBuilder setAddress(String address) {
         if (address != null && address.isBlank()) {
-            this.address = null; // пустую строку превращаем в null
+            this.address = null;
         } else {
             this.address = address;
         }

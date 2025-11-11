@@ -1,4 +1,4 @@
-package ru.netology.people;
+package ru.netology.builder;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,25 +10,21 @@ public class Main {
                 .setAddress("Сидней")
                 .build();
 
-
         Person son = mom.newChildBuilder()
                 .setName("Антошка")
                 .build();
 
         System.out.println("У " + mom + " есть сын, " + son);
 
-
         System.out.println("Фамилия сына: " + son.getSurname());
         System.out.println("Город сына: " + son.getAddress());
         System.out.println("Возраст сына: " + son.getAge().orElse(-1));
-
 
         try {
             new PersonBuilder().build();
         } catch (IllegalStateException e) {
             System.out.println("Ошибка: " + e.getMessage());
         }
-
 
         try {
             new PersonBuilder()
@@ -39,7 +35,6 @@ public class Main {
         } catch (IllegalArgumentException e) {
             System.out.println("Ошибка: " + e.getMessage());
         }
-
 
         Person guest = new PersonBuilder()
                 .setName("Гость")

@@ -1,4 +1,5 @@
-package ru.netology.people;
+package ru.netology.builder;
+
 import java.util.Objects;
 import java.util.OptionalInt;
 
@@ -8,7 +9,6 @@ public class Person {
     private Integer age;
     private String city;
 
-    // Приватный конструктор — используется только из Builder
     public Person(String name, String surname, Integer age, String city) {
         this.name = name;
         this.surname = surname;

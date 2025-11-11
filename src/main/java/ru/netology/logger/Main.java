@@ -17,11 +17,11 @@ public class Main {
 
         System.out.println("Введите размер списка:");
         Integer n = Integer.parseInt(sc.nextLine());
-        logger.log("Введите размер списка:");
+        logger.log("Введите размер списка: " + n);
 
         System.out.println("Введите верхнюю границу для значений:");
         Integer m = Integer.parseInt(sc.nextLine());
-        logger.log("Введите верхнюю границу для значений:");
+        logger.log("Введите верхнюю границу для значений: " + m);
 
         List<Integer> list = new ArrayList<>();
         Random random = new Random();
@@ -29,9 +29,9 @@ public class Main {
         StringBuilder st = new StringBuilder();
         for (int i = 0; i < n; i++) {
             list.add(random.nextInt(m + 1));
-            st.append(n).append(" ");
+            //st.append(n).append(" ");
         }
-        logger.log("Создаем и наполняем список \n Вот случайный список: " + st);
+        logger.log("Создаем и наполняем список \n Вот случайный список: " + list);
 
         System.out.println("Введите порог для фильтра:");
         Integer f = Integer.parseInt(sc.nextLine());

@@ -33,9 +33,16 @@ public class Main {
         }
         logger.log("Создаем и наполняем список \n Вот случайный список: " + st);
 
-
-
+        System.out.println("Введите порог для фильтра:");
+        Integer f = Integer.parseInt(sc.nextLine());
         logger.log("Просим пользователя ввести входные данные для фильтрации\n" +
-                "Введите порог для фильтра: 4" + st);
+                "Введите порог для фильтра: " + f);
+
+        Filter filter = new Filter(f);
+        List<Integer> fList = filter.filterOut(list);
+
+        logger.log( "Прошло фильтр " + fList.size() + " элемента из " + n);
+        logger.log( "Выводим результат на экран\nОтфильтрованный список: " + fList );
+        logger.log( "Завершаем программу");
     }
 }

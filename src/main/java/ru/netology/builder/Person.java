@@ -84,8 +84,8 @@ public class Person {
     // Метод для создания билдера ребёнка
     public PersonBuilder newChildBuilder() {
         return new PersonBuilder()
-                .setSurname(this.surname)   // фамилия как у родителя
-                .setAddress(this.city)      // город как у родителя
-                .setAge(0);                 // возраст 0 (или можно не задавать — тогда будет null)
+                .setSurname(this.surname)
+                .setAddress(this.city)
+                .setAge(0);
     }
 }

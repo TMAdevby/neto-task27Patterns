@@ -41,8 +41,9 @@ public class Main {
         Filter filter = new Filter(f);
         List<Integer> fList = filter.filterOut(list);
 
-        logger.log( "Прошло фильтр " + fList.size() + " элемента из " + n);
-        logger.log( "Выводим результат на экран\nОтфильтрованный список: " + fList );
-        logger.log( "Завершаем программу");
+        logger.log("Прошло фильтр " + fList.size() + " элемента из " + n);
+        logger.log("Выводим результат на экран\nОтфильтрованный список: " + fList);
+        logger.log("Завершаем программу");
+        sc.close();
     }
 }

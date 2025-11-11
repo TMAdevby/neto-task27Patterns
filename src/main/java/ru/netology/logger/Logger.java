@@ -20,7 +20,7 @@ public class Logger {
 
     public static Logger getLogger() {
 
-        if (logger==null) {
+        if (logger == null) {
             logger = new Logger();
         }
         return logger;

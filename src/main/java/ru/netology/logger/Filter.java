@@ -14,11 +14,11 @@ public class Filter {
         Logger logger = Logger.getLogger();
         List<Integer> result = new ArrayList<>();
         logger.log("Запускаем фильтрацию");
-        for (Integer num : source){
-            if(num >= treshold){
+        for (Integer num : source) {
+            if (num >= treshold) {
                 result.add(num);
                 logger.log(" Элемент \'" + num + "\' проходит ");
-            }else{
+            } else {
                 logger.log(" Элемент \'" + num + "\' не проходит ");
             }
         }

@@ -26,7 +26,7 @@ public class Main {
         List<Integer> list = new ArrayList<>();
         Random random = new Random();
 
-        StringBuilder st = new StringBuilder();
+        //StringBuilder st = new StringBuilder();
         for (int i = 0; i < n; i++) {
             list.add(random.nextInt(m + 1));
             //st.append(n).append(" ");
